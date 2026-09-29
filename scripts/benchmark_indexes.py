@@ -125,8 +125,8 @@ def main() -> None:
     print("-" * len(header) + "-" * 20)
     for name, w, wp, wo, wop in results:
         print(f"{name:<40} {w:>8.2f}ms {wo:>8.2f}ms {wo / w:>8.1f}x   {wp}  ->  {wop}")
-    print("\nNote: a full-table aggregation gains little from indexes - the planner correctly "
-          "prefers a sequential scan when it has to read (almost) every row anyway.")
+    print("\nNote: indexes only help selective queries. A full-table aggregation has to read every row "
+          "either way, so it gains nothing and an index-based plan can even be slower than a sequential scan.")
 
 
 if __name__ == "__main__":
